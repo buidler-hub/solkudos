@@ -1,5 +1,6 @@
-import { Box, Text, Button } from '@chakra-ui/react';
+import { Box, Text, Button, Flex } from '@chakra-ui/react';
 import { NextComponentType } from 'next';
+import { BsArrowRight } from 'react-icons/bs';
 
 const Hero: NextComponentType = () => {
     return (
@@ -12,14 +13,41 @@ const Hero: NextComponentType = () => {
             fontFamily="inter"
             alignItems="center"
         >
+            <Flex
+                px="6"
+                h="8"
+                rounded="full"
+                border="thin solid"
+                borderColor="rgb(34, 35, 37)"
+                fontSize="sm"
+                textColor="white"
+                cursor="pointer"
+                bg="#131314"
+                _hover={{ bg: 'rgb(34, 35, 37)' }}
+                transition="all 0.2s"
+                dir="row"
+                alignItems="center"
+            >
+                We&apos;re Open Source on GitHub |&nbsp;
+                <Text
+                    color="purple.500"
+                    fontWeight="500"
+                    display="flex"
+                    flexDir="row"
+                    alignItems="center"
+                    gap="1"
+                >
+                    GITHUB <BsArrowRight />
+                </Text>
+            </Flex>
             <Text
                 fontWeight="900"
                 textColor="white"
                 fontSize="6xl"
                 lineHeight="72px"
             >
-                The issue tracking <br />
-                tool you&apos;ll fix
+                Celebrate wins together <br />
+                Mint Achievements as NFTs
             </Text>
 
             <Text
@@ -28,9 +56,9 @@ const Hero: NextComponentType = () => {
                 textColor="gray.100"
                 opacity="80%"
             >
-                Linear helps streamline software projects, sprints, tasks, and
-                bug <br />
-                tracking. It’s built for high-performance teams.
+                Celebrate your launches, achievements together. Mint them as{' '}
+                <br />
+                NFTs, directly on Solana Chain!
             </Text>
 
             <Button
@@ -40,7 +68,7 @@ const Hero: NextComponentType = () => {
                 fontFamily="inter"
                 fontWeight="500"
                 textColor="white"
-                bg="linear-gradient(92.7deg, #5D2CE8 0%, #4523A4 49.48%, rgba(93, 44, 232, 0.82) 100%)"
+                bgGradient="linear(93.04deg, #9211F8 0%, rgba(173, 34, 239, 0.99) 100%)"
                 _hover={{}}
                 _active={{}}
                 _focus={{}}
