@@ -1,6 +1,9 @@
 import '../styles/fonts.css';
 import theme from '../styles/theme';
 import { ChakraProvider } from '@chakra-ui/react';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/900.css';
 import { NextSeo } from 'next-seo';
 import { AppProps } from 'next/app';
 import NextNProgress from 'nextjs-progressbar';
