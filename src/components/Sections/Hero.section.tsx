@@ -1,6 +1,7 @@
 import { Box, Text, Button, Flex } from '@chakra-ui/react';
 import { NextComponentType } from 'next';
 import { BsArrowRight } from 'react-icons/bs';
+import Typed from 'react-typed';
 
 const Hero: NextComponentType = () => {
     return (
@@ -30,7 +31,7 @@ const Hero: NextComponentType = () => {
             >
                 We&apos;re Open Source on GitHub |&nbsp;
                 <Text
-                    color="purple.500"
+                    color="pink.500"
                     fontWeight="500"
                     display="flex"
                     flexDir="row"
@@ -46,8 +47,17 @@ const Hero: NextComponentType = () => {
                 fontSize="6xl"
                 lineHeight="72px"
             >
-                Celebrate wins together <br />
-                Mint Achievements as NFTs
+                <Text display="flex" flexDir="row">
+                    Celebrate and Mint&nbsp;
+                    <Text textColor="pink.500">
+                        <Typed
+                            strings={['wins', 'achievements']}
+                            typeSpeed={50}
+                            loop
+                        />
+                    </Text>
+                </Text>
+                <Text>as NFTs, together</Text>
             </Text>
 
             <Text
@@ -68,7 +78,8 @@ const Hero: NextComponentType = () => {
                 fontFamily="inter"
                 fontWeight="500"
                 textColor="white"
-                bgGradient="linear(93.04deg, #9211F8 0%, rgba(173, 34, 239, 0.99) 100%)"
+                colorScheme="pink"
+                // bgGradient="linear(93.04deg, #9211F8 0%, rgba(173, 34, 239, 0.99) 100%)"
                 _hover={{}}
                 _active={{}}
                 _focus={{}}
