@@ -30,6 +30,7 @@ const Home: NextPage = () => {
     const { register, handleSubmit, setValue, getValues, reset } = useForm({
         defaultValues,
     });
+
     const { publicKey } = useWallet();
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
@@ -56,6 +57,7 @@ const Home: NextPage = () => {
                 ...data,
                 creator: publicKey,
                 whitelistedPublicKeys: [publicKey],
+                base64: data.base64.split('data:image/jpeg;base64,')[1],
             });
 
             reset({ ...defaultValues });
