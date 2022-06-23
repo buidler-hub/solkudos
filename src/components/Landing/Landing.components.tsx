@@ -57,26 +57,7 @@ const MainText = () => {
 };
 
 const CTAButton = () => {
-    return (
-        <Button
-            _active={{
-                bg: 'pink.400',
-            }}
-            _focus={{}}
-            _hover={{
-                bg: 'pink.600',
-            }}
-            bg="pink.500"
-            color="white"
-            fontSize="lg"
-            fontWeight="500"
-            h="12"
-            mt="4"
-            px="8"
-        >
-            Sign up for free
-        </Button>
-    );
+    return <Button>Sign up for free</Button>;
 };
 
 export { GitHubBadge, MainText, CTAButton };

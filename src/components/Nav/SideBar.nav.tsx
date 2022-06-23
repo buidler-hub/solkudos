@@ -1,4 +1,4 @@
-import { MintKudosButton, NavOption } from './Nav.components';
+import { NavOption } from './Nav.components';
 import navOptions from './navOptions';
 import { Box, Flex } from '@chakra-ui/react';
 import { NextComponentType } from 'next';
@@ -51,8 +51,6 @@ const SideBar: NextComponentType = () => {
                         <NavOption key={option.label} {...option} />
                     ))}
                 </Flex>
-
-                <MintKudosButton />
             </Box>
         </>
     );

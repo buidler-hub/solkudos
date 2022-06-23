@@ -1,9 +1,14 @@
-import { MintKudosButton, NavOption } from './Nav.components';
+import { NavOption } from './Nav.components';
 import navOptions from './navOptions';
-import { Flex, Text } from '@chakra-ui/react';
+import { Button, Flex, Text } from '@chakra-ui/react';
+import { useWallet } from '@solana/wallet-adapter-react';
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { NextComponentType } from 'next';
+import Link from 'next/link';
 
 const Header: NextComponentType = () => {
+    const { publicKey } = useWallet();
+
     return (
         <Flex
             alignItems="center"
@@ -32,7 +37,15 @@ const Header: NextComponentType = () => {
                 ))}
             </Flex>
 
-            <MintKudosButton display={{ base: 'none', md: 'flex' }} />
+            {publicKey ? (
+                <Link href="/app">
+                    <Button fontSize="md" h="8" px="4" rounded="sm">
+                        Mint Kudos
+                    </Button>
+                </Link>
+            ) : (
+                <WalletMultiButton className="mint-kudos-button" />
+            )}
         </Flex>
     );
 };

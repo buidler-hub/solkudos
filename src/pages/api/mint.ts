@@ -1,4 +1,3 @@
-import mintReqSchema from '@/schemas/mintReqSchema';
 import transferNft from '@/utils/transferNft';
 import { keypairIdentity, Metaplex } from '@metaplex-foundation/js';
 import {
@@ -17,7 +16,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 const uploadToArweave = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'POST') {
-        const { metadata, receiver } = await mintReqSchema.validate(req.body);
+        const { metadata, receiver } = req.body;
 
         try {
             const connection = new Connection(

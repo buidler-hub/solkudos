@@ -17,7 +17,7 @@ const kudosSchema = new Schema({
         type: String,
         required: true,
     },
-    isWhitelisted: {
+    isPublic: {
         type: Boolean,
         required: true,
     },

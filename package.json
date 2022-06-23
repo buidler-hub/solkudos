@@ -31,6 +31,7 @@
         "@solana/web3.js": "^1.44.2",
         "@types/uuid": "^8.3.4",
         "arweave": "^1.11.4",
+        "axios": "^0.27.2",
         "crypto": "^1.0.1",
         "framer-motion": "^6.3.12",
         "mongoose": "^6.4.0",
@@ -40,9 +41,11 @@
         "qs": "^6.10.5",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-dropzone": "^14.2.1",
+        "react-hook-form": "^7.32.2",
+        "react-hot-toast": "^2.2.0",
         "react-icons": "^4.4.0",
-        "react-typed": "^1.2.0",
-        "yup": "^0.32.11"
+        "react-typed": "^1.2.0"
     },
     "devDependencies": {
         "@commitlint/cli": "^17.0.2",

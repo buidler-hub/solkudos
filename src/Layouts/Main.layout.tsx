@@ -17,13 +17,13 @@ const Layout: FC<ILayoutProps> = ({ children }) => {
             minH="100vh"
             overflowX="hidden"
             textAlign="center"
-            w="full"
+            w="100vw"
         >
             <Header />
             {children}
             <Sidebar />
-            <Blob bg="purple.600" left="0" />
-            <Blob bg="pink.600" right="0" />
+            <Blob bg="purple.600" left="0" zIndex="0" />
+            <Blob bg="pink.600" right="0" zIndex="0" />
         </Box>
     );
 };

@@ -1,3 +1,4 @@
+import '../styles/globals.css';
 import theme from '@/theme/theme';
 import { ChakraProvider } from '@chakra-ui/react';
 import '@fontsource/inter/400.css';
@@ -21,6 +22,7 @@ import { NextSeo } from 'next-seo';
 import { AppProps } from 'next/app';
 import NextNProgress from 'nextjs-progressbar';
 import { useMemo } from 'react';
+import { Toaster } from 'react-hot-toast';
 
 require('@solana/wallet-adapter-react-ui/styles.css');
 
@@ -45,6 +47,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
             <ConnectionProvider endpoint={endpoint}>
                 <WalletProvider autoConnect wallets={wallets}>
                     <WalletModalProvider>
+                        <Toaster />
                         <NextSeo
                             defaultTitle="Celebrate your launches, achievements together. Mint them as NFTs, directly on Solana Chain!"
                             title="Solkudos"

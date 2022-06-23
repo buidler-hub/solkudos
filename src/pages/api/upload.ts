@@ -1,14 +1,23 @@
 import encrypted from '../../../solana.enc';
-import uploadReqSchema from '@/schemas/uploadReqSchema';
+import { withDb } from '@/middleware';
+import Kudos from '@/models/kudos';
 import Arweave from 'arweave';
 import crypto from 'crypto';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { v4 as uuidv4 } from 'uuid';
 
 const uploadToArweave = async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'POST') {
-        const { base64, title, description } = await uploadReqSchema.validate(
-            req.body,
-        );
+        const {
+            base64,
+            title,
+            description,
+            creator,
+            isPublic,
+            whitelistedPublicKeys,
+        } = req.body;
+
+        const uid = uuidv4();
 
         try {
             const arweave = Arweave.init({
@@ -89,14 +98,31 @@ const uploadToArweave = async (req: NextApiRequest, res: NextApiResponse) => {
             await arweave.transactions.sign(metadataTransaction, wallet);
             await arweave.transactions.post(metadataTransaction);
 
-            return res.status(200).json({
-                image: imageUrl,
+            await Kudos.create({
+                creator,
+                description,
+                id: uid,
+                isPublic,
                 metadata: `https://arweave.net/${metadataTransaction.id}`,
+                title,
+                whitelistedPublicKeys,
+            });
+
+            return res.status(200).json({
+                message: 'A new kudo has been created',
+                kudos: {
+                    creator,
+                    description,
+                    id: uid,
+                    isPublic,
+                    metadata: `https://arweave.net/${metadataTransaction.id}`,
+                    title,
+                    whitelistedPublicKeys,
+                },
             });
         } catch (err) {
             return res.status(500).json({
-                message:
-                    'An error occurred while uploading the data to arweave',
+                message: 'An error occurred while creating a new kudo',
                 error: err,
             });
         }
@@ -105,4 +131,4 @@ const uploadToArweave = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(405).json({ message: 'Method not allowed' });
 };
 
-export default uploadToArweave;
+export default withDb(uploadToArweave);
