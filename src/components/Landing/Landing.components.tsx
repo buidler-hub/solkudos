@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Text } from '@chakra-ui/react';
+import { Box, Flex, Text } from '@chakra-ui/react';
 import { BsArrowRight } from 'react-icons/bs';
 import ReactTyped from 'react-typed';
 
@@ -56,8 +56,4 @@ const MainText = () => {
     );
 };
 
-const CTAButton = () => {
-    return <Button>Sign up for free</Button>;
-};
-
-export { GitHubBadge, MainText, CTAButton };
+export { GitHubBadge, MainText };

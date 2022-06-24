@@ -22,9 +22,11 @@ const Header: NextComponentType = () => {
             top="0"
             w="full"
         >
-            <Text fontSize="xl" fontWeight="500">
-                solkudos
-            </Text>
+            <Link href="/">
+                <Text cursor="pointer" fontSize="xl" fontWeight="500">
+                    solkudos
+                </Text>
+            </Link>
             <Flex
                 alignItems="center"
                 display={{ base: 'none', md: 'flex' }}
@@ -38,7 +40,7 @@ const Header: NextComponentType = () => {
             </Flex>
 
             {publicKey ? (
-                <Link href="/app">
+                <Link href="/mint">
                     <Button fontSize="md" h="8" px="4" rounded="sm">
                         Mint Kudos
                     </Button>

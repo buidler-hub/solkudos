@@ -4,7 +4,7 @@ const navOptions = [
         label: 'Home',
     },
     {
-        href: '/app',
+        href: '/mint',
         label: 'App',
     },
     {

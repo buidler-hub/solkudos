@@ -1,10 +1,7 @@
-import {
-    CTAButton,
-    GitHubBadge,
-    MainText,
-} from '../Landing/Landing.components';
-import { Box, Text } from '@chakra-ui/react';
+import { GitHubBadge, MainText } from '../Landing/Landing.components';
+import { Box, Button, Text } from '@chakra-ui/react';
 import { NextComponentType } from 'next';
+import Link from 'next/link';
 
 const Hero: NextComponentType = () => {
     return (
@@ -24,7 +21,9 @@ const Hero: NextComponentType = () => {
                 <br />
                 NFTs, directly on Solana Chain!
             </Text>
-            <CTAButton />
+            <Link href="/mint">
+                <Button>Get Started</Button>
+            </Link>
         </Box>
     );
 };
