@@ -1,18 +1,4 @@
-import { Flex, Box, ChakraProps, Image, Text } from '@chakra-ui/react';
-import { FC } from 'react';
-
-const Blob: FC<ChakraProps> = ({ ...otherProps }) => {
-    return (
-        <Box
-            filter="blur(95px)"
-            h="24"
-            pos="absolute"
-            rounded="full"
-            w="36"
-            {...otherProps}
-        ></Box>
-    );
-};
+import { Flex, Image, Text } from '@chakra-ui/react';
 
 const MintCard = ({ title, desc }) => {
     return (
@@ -31,6 +17,8 @@ const MintCard = ({ title, desc }) => {
             <Flex
                 alignItems="center"
                 bgColor="rgba(15, 15, 16, 0.4)"
+                bgImage="url(/assets/kudoBg.svg)"
+                bgSize="cover"
                 direction="column"
                 gap="2"
                 h="64"
@@ -56,9 +44,6 @@ const MintCard = ({ title, desc }) => {
                     {desc}
                 </Text>
             </Flex>
-
-            <Blob bgColor="#9333EA" bottom="0" left="0" />
-            <Blob bgColor="#DB2777" right="0" top="0" />
         </Flex>
     );
 };

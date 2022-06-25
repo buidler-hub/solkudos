@@ -45,10 +45,10 @@ const MintPage: NextPage<IMintPageProps> = ({ data, Kudos }) => {
             >
                 <Image
                     alt={name}
-                    height="64"
-                    rounded="8"
+                    height="72"
+                    rounded="10"
                     src={image}
-                    width="64"
+                    width="72"
                 />
 
                 <Text color="white" fontFamily="inter" fontSize="xl">
