@@ -118,6 +118,7 @@ const StepOne: NextComponentType<NextPageContext, {}, props> = ({
                     textColor="rgb(255, 255, 255, 0.4)"
                     w="full"
                     {...getRootProps()}
+                    cursor="pointer"
                 >
                     <input {...getInputProps()} />
                     or drag n drop a file here...

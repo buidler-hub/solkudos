@@ -69,7 +69,7 @@ const MintPage: NextPage = () => {
                     px="8"
                     py="8"
                     rounded="8"
-                    w="55rem"
+                    w="50rem"
                     zIndex="2"
                 >
                     <StepOne

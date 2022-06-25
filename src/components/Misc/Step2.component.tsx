@@ -35,14 +35,7 @@ const StepTwo: NextComponentType<NextPageContext, {}, props> = ({
                 w="96"
             />
 
-            <Flex
-                alignItems="center"
-                direction="column"
-                h="32"
-                justifyContent="space-between"
-            >
-                <Button>Mint Kudo</Button>
-            </Flex>
+            <Button>Mint Kudo</Button>
         </Flex>
     );
 };
