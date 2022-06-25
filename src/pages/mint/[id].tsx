@@ -19,9 +19,6 @@ const MintPage: NextPage<IMintPageProps> = ({ data, Kudos }) => {
     const { publicKey } = useWallet();
 
     const canMint = () => {
-        if (!publicKey) {
-            return false;
-        }
         if (isPublic) {
             return true;
         }
