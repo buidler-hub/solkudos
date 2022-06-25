@@ -1,19 +1,14 @@
 import MintCard from './MintCard.component';
-import { Flex, Box, Input, Button, Checkbox } from '@chakra-ui/react';
+import { Flex, Box, Input, Button } from '@chakra-ui/react';
 import { NextComponentType, NextPageContext } from 'next';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
-import {
-    UseFormGetValues,
-    UseFormRegister,
-    UseFormSetValue,
-} from 'react-hook-form';
+import { UseFormRegister, UseFormSetValue } from 'react-hook-form';
 import { IFormValues } from 'types/mintFormTypes';
 
 interface props {
     vis: boolean;
     handleClick: () => void;
-    getValues: UseFormGetValues<IFormValues>;
     setValue: UseFormSetValue<IFormValues>;
     register: UseFormRegister<IFormValues>;
 }
@@ -42,7 +37,6 @@ const StepOne: NextComponentType<NextPageContext, {}, props> = ({
     handleClick,
     setValue,
     register,
-    getValues,
 }) => {
     const onDrop = useCallback(acceptedFiles => {
         const file = acceptedFiles[0];
@@ -58,8 +52,6 @@ const StepOne: NextComponentType<NextPageContext, {}, props> = ({
     const { getRootProps, getInputProps } = useDropzone({
         onDrop,
     });
-
-    const [isPublic, setIsPublic] = useState(getValues('isPublic'));
 
     return (
         <Flex
@@ -91,23 +83,6 @@ const StepOne: NextComponentType<NextPageContext, {}, props> = ({
                     />
                 </Flex>
 
-                <Checkbox
-                    _active={{}}
-                    _focus={{}}
-                    checked={getValues('isPublic')}
-                    fontFamily="inter"
-                    fontSize="xl"
-                    fontWeight="500"
-                    onChange={e => {
-                        setIsPublic(e.target.checked);
-                        setValue('isPublic', e.target.checked);
-                    }}
-                    size="lg"
-                    textColor="white"
-                >
-                    Public
-                </Checkbox>
-
                 <Box
                     bgGradient="linear(90.97deg, rgba(15, 15, 16, 0.76) 0%, rgba(15, 15, 16, 0.57) 100%)"
                     fontFamily="inter"
@@ -125,7 +100,7 @@ const StepOne: NextComponentType<NextPageContext, {}, props> = ({
                 </Box>
 
                 <Button fontSize="md" h="10" onClick={handleClick} w="85%">
-                    {isPublic ? 'Create' : 'Next Step'}
+                    Next Step
                 </Button>
             </Box>
         </Flex>

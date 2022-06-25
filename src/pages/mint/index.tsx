@@ -15,7 +15,7 @@ import { IFormValues } from 'types/mintFormTypes';
 const defaultValues: IFormValues = {
     title: '',
     description: '',
-    isPublic: false,
+    isPublic: true,
     whitelistedPublicKeys: [],
     base64: '',
 };
@@ -36,7 +36,7 @@ const MintPage: NextPage = () => {
                 ...data,
                 creator: publicKey,
                 whitelistedPublicKeys: [publicKey],
-                base64: data.base64.split('data:image/jpeg;base64,')[1],
+                base64: data.base64.split('base64,')[1],
             });
 
             reset({ ...defaultValues });
@@ -73,19 +73,19 @@ const MintPage: NextPage = () => {
                     zIndex="2"
                 >
                     <StepOne
-                        getValues={getValues}
-                        handleClick={() => {
-                            if (getValues('isPublic')) {
-                                handleSubmit(onSubmit);
-                            }
-                            setStep(1);
-                        }}
+                        handleClick={() => setStep(1)}
                         register={register}
                         setValue={setValue}
-                        vis={step === 0 && true}
+                        vis={step === 0}
                     />
 
-                    <StepTwo vis={step === 1 && true} />
+                    <StepTwo
+                        getValues={getValues}
+                        handleClick={handleSubmit(onSubmit)}
+                        register={register}
+                        setValue={setValue}
+                        vis={step === 1}
+                    />
                 </Box>
             </Box>
         </Layout>
