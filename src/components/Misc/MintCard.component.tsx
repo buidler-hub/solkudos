@@ -1,9 +1,18 @@
-import { Box, Text } from '@chakra-ui/react';
+import { Flex, Text } from '@chakra-ui/react';
 import { NextComponentType } from 'next';
 
 const MintCard: NextComponentType = () => {
     return (
-        <Box bgColor="#0F0F10" display="grid" h="80" placeItems="center" w="80">
+        <Flex
+            align="center"
+            bg="#0F0F10"
+            flexDir="column"
+            h="350px"
+            justify="center"
+            minW="350px"
+            pos="relative"
+            rounded="lg"
+        >
             <Text
                 bgClip="text"
                 bgGradient="linear(90deg, #EC008C 0%, #FC6767 100%)"
@@ -16,7 +25,7 @@ const MintCard: NextComponentType = () => {
                 CARD <br />
                 THINGY
             </Text>
-        </Box>
+        </Flex>
     );
 };
 

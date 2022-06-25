@@ -1,4 +1,4 @@
-import { Flex, Textarea, Checkbox, Button } from '@chakra-ui/react';
+import { Flex, Textarea, Button } from '@chakra-ui/react';
 import { NextComponentType, NextPageContext } from 'next';
 
 interface props {
@@ -41,18 +41,6 @@ const StepTwo: NextComponentType<NextPageContext, {}, props> = ({
                 h="32"
                 justifyContent="space-between"
             >
-                <Checkbox
-                    _active={{}}
-                    _focus={{}}
-                    fontFamily="inter"
-                    fontSize="xl"
-                    fontWeight="500"
-                    size="lg"
-                    textColor="white"
-                >
-                    Private
-                </Checkbox>
-
                 <Button>Mint Kudo</Button>
             </Flex>
         </Flex>
