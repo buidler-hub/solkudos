@@ -37,7 +37,12 @@ const GitHubBadge = () => {
 
 const MainText = () => {
     return (
-        <Box color="white" fontSize={['3xl', '6xl']} fontWeight="900">
+        <Box
+            color="white"
+            fontSize={['3xl', '6xl']}
+            fontWeight="900"
+            zIndex={2}
+        >
             <Box display="flex">
                 Celebrate and Mint&nbsp;
                 <Text color="pink.500" display={{ base: 'block', lg: 'none' }}>

@@ -29,27 +29,10 @@ const StepTwo: NextComponentType<NextPageContext, {}, props> = ({
         <Flex
             alignItems="center"
             display={!vis ? 'none' : 'flex'}
-            flexDir="column"
             justifyContent="space-between"
             px="12"
             w="full"
         >
-            <Checkbox
-                _active={{}}
-                _focus={{}}
-                checked={isPublic}
-                fontFamily="inter"
-                fontSize="xl"
-                fontWeight="500"
-                onChange={e => {
-                    setValue('isPublic', e.target.checked);
-                    setIsPublic(e.target.checked);
-                }}
-                size="lg"
-                textColor="white"
-            >
-                Public
-            </Checkbox>
             <Textarea
                 _active={{}}
                 _focus={{}}
@@ -62,16 +45,34 @@ const StepTwo: NextComponentType<NextPageContext, {}, props> = ({
                 bgGradient="linear(90.97deg, rgba(15, 15, 16, 0.76) 0%, rgba(15, 15, 16, 0.57) 100%)"
                 border="none"
                 borderColor="white"
-                display={!isPublic ? 'block' : 'none'}
                 outline="none"
-                placeholder="Enter desired addresses over here..."
+                placeholder="Enter comma separated list of allowed addresses here..."
                 rounded="lg"
                 size="md"
                 w="96"
                 {...register('whitelistedPublicKeys')}
+                disabled={isPublic}
             />
-
-            <Button onClick={handleClick}>Mint Kudo</Button>
+            <Flex alignItems="center" direction="column" gap="3">
+                <Checkbox
+                    _active={{}}
+                    _focus={{}}
+                    _hover={{}}
+                    checked={isPublic}
+                    fontFamily="inter"
+                    fontSize="xl"
+                    fontWeight="500"
+                    onChange={e => {
+                        setValue('isPublic', e.target.checked);
+                        setIsPublic(e.target.checked);
+                    }}
+                    size="lg"
+                    textColor="white"
+                >
+                    Public
+                </Checkbox>
+                <Button onClick={handleClick}>Mint Kudo</Button>
+            </Flex>
         </Flex>
     );
 };

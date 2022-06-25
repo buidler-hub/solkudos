@@ -5,6 +5,7 @@ import Steps from '@/components/Misc/Steps.component';
 import { Box } from '@chakra-ui/react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import axios from 'axios';
+import html2canvas from 'html2canvas';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -47,6 +48,15 @@ const MintPage: NextPage = () => {
         }
     };
 
+    const handleClick = async () => {
+        const elem = document.querySelector('.mintCard');
+
+        const dataURL = (await html2canvas(elem as HTMLElement)).toDataURL();
+        setValue('base64', dataURL);
+
+        setStep(1);
+    };
+
     return (
         <Layout>
             <Box
@@ -73,9 +83,8 @@ const MintPage: NextPage = () => {
                     zIndex="2"
                 >
                     <StepOne
-                        handleClick={() => setStep(1)}
+                        handleClick={handleClick}
                         register={register}
-                        setValue={setValue}
                         vis={step === 0}
                     />
 

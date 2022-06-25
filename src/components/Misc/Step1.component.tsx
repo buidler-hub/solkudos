@@ -1,15 +1,13 @@
 import MintCard from './MintCard.component';
 import { Flex, Box, Input, Button } from '@chakra-ui/react';
 import { NextComponentType, NextPageContext } from 'next';
-import { useCallback } from 'react';
-import { useDropzone } from 'react-dropzone';
-import { UseFormRegister, UseFormSetValue } from 'react-hook-form';
+import { useState } from 'react';
+import { UseFormRegister } from 'react-hook-form';
 import { IFormValues } from 'types/mintFormTypes';
 
 interface props {
     vis: boolean;
     handleClick: () => void;
-    setValue: UseFormSetValue<IFormValues>;
     register: UseFormRegister<IFormValues>;
 }
 
@@ -35,23 +33,10 @@ const inputStyles = {
 const StepOne: NextComponentType<NextPageContext, {}, props> = ({
     vis,
     handleClick,
-    setValue,
     register,
 }) => {
-    const onDrop = useCallback(acceptedFiles => {
-        const file = acceptedFiles[0];
-        const reader = new FileReader();
-
-        reader.onload = () => {
-            const binaryStr = reader.result as string;
-            setValue('base64', binaryStr);
-        };
-        reader.readAsDataURL(file);
-    }, []);
-
-    const { getRootProps, getInputProps } = useDropzone({
-        onDrop,
-    });
+    const [title, setTitle] = useState<string>();
+    const [desc, setDesc] = useState<string>();
 
     return (
         <Flex
@@ -59,7 +44,7 @@ const StepOne: NextComponentType<NextPageContext, {}, props> = ({
             justifyContent="space-between"
             w="full"
         >
-            <MintCard />
+            <MintCard desc={desc} title={title} />
 
             <Box
                 alignItems="center"
@@ -74,30 +59,16 @@ const StepOne: NextComponentType<NextPageContext, {}, props> = ({
                         placeholder="Title goes here..."
                         {...inputStyles}
                         {...register('title')}
+                        onChange={e => setTitle(e.target.value as string)}
                     />
 
                     <Input
                         placeholder="Desc goes here..."
                         {...inputStyles}
                         {...register('description')}
+                        onChange={e => setDesc(e.target.value as string)}
                     />
                 </Flex>
-
-                <Box
-                    bgGradient="linear(90.97deg, rgba(15, 15, 16, 0.76) 0%, rgba(15, 15, 16, 0.57) 100%)"
-                    fontFamily="inter"
-                    fontSize="md"
-                    fontWeight="500"
-                    py="8"
-                    rounded="lg"
-                    textColor="rgb(255, 255, 255, 0.4)"
-                    w="full"
-                    {...getRootProps()}
-                    cursor="pointer"
-                >
-                    <input {...getInputProps()} />
-                    or drag n drop a file here...
-                </Box>
 
                 <Button fontSize="md" h="10" onClick={handleClick} w="85%">
                     Next Step
