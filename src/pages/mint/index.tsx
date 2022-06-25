@@ -7,7 +7,6 @@ import { useWallet } from '@solana/wallet-adapter-react';
 import axios from 'axios';
 import html2canvas from 'html2canvas';
 import { NextPage } from 'next';
-import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -29,32 +28,40 @@ const MintPage: NextPage = () => {
     });
 
     const { publicKey } = useWallet();
-    const router = useRouter();
 
     const onSubmit = async data => {
         try {
             const response = await axios.post('/api/upload', {
                 ...data,
                 creator: publicKey,
-                whitelistedPublicKeys: [publicKey],
+                whitelistedPublicKeys: [
+                    ...data.whitelistedPublicKeys.split(', '),
+                    publicKey,
+                ],
                 base64: data.base64.split('base64,')[1],
             });
 
             reset({ ...defaultValues });
             toast.success('Upload successful!');
-            router.push(`/mint/${response.data.kudos.id}`);
+            console.log(response.data);
         } catch (error) {
-            toast.error('Upload failed!');
+            console.log(error);
         }
     };
 
     const handleClick = async () => {
-        const elem = document.querySelector('.mintCard');
+        if (getValues('title') !== '' && getValues('description') !== '') {
+            setStep(1);
 
-        const dataURL = (await html2canvas(elem as HTMLElement)).toDataURL();
-        setValue('base64', dataURL);
+            const elem = document.querySelector('.mintCard');
 
-        setStep(1);
+            const dataURL = (
+                await html2canvas(elem as HTMLElement)
+            ).toDataURL();
+            setValue('base64', dataURL);
+        } else {
+            toast.error('Fill in the values first');
+        }
     };
 
     return (

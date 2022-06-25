@@ -52,13 +52,17 @@ const StepTwo: NextComponentType<NextPageContext, {}, props> = ({
                 w="96"
                 {...register('whitelistedPublicKeys')}
                 disabled={isPublic}
+                fontFamily="inter"
+                fontWeight="500"
+                textColor="rgb(255, 255, 255, 0.4)"
+                zIndex={3}
             />
             <Flex alignItems="center" direction="column" gap="3">
                 <Checkbox
                     _active={{}}
                     _focus={{}}
                     _hover={{}}
-                    checked={isPublic}
+                    checked={!isPublic}
                     fontFamily="inter"
                     fontSize="xl"
                     fontWeight="500"
