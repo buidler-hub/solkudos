@@ -1,8 +1,9 @@
 import Layout from '@/Layouts/Main.layout';
+import { CreatedKudoModal } from '@/components';
 import StepOne from '@/components/Misc/Step1.component';
 import StepTwo from '@/components/Misc/Step2.component';
 import Steps from '@/components/Misc/Steps.component';
-import { Box } from '@chakra-ui/react';
+import { Box, useDisclosure } from '@chakra-ui/react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import axios from 'axios';
 import html2canvas from 'html2canvas';
@@ -22,6 +23,10 @@ const defaultValues: IFormValues = {
 
 const MintPage: NextPage = () => {
     const [step, setStep] = useState<number>(0);
+    const { isOpen, onOpen, onClose } = useDisclosure();
+
+    const [isLoading, setLoading] = useState<boolean>(false);
+    const [id, setID] = useState<string>();
 
     const { register, handleSubmit, setValue, getValues, reset } = useForm({
         defaultValues,
@@ -30,23 +35,32 @@ const MintPage: NextPage = () => {
     const { publicKey } = useWallet();
 
     const onSubmit = async data => {
-        try {
-            const response = await axios.post('/api/upload', {
-                ...data,
-                creator: publicKey,
-                whitelistedPublicKeys: [
-                    ...data.whitelistedPublicKeys.split(', '),
-                    publicKey,
-                ],
-                base64: data.base64.split('base64,')[1],
-            });
+        setLoading(true);
+        if (publicKey) {
+            try {
+                const response = await axios.post('/api/upload', {
+                    ...data,
+                    creator: publicKey,
+                    whitelistedPublicKeys: data.isPublic
+                        ? [publicKey]
+                        : [
+                              ...data.whitelistedPublicKeys.split(', '),
+                              publicKey,
+                          ],
+                    base64: data.base64.split('base64,')[1],
+                });
 
-            reset({ ...defaultValues });
-            toast.success('Upload successful!');
-            console.log(response.data);
-        } catch (error) {
-            console.log(error);
+                reset({ ...defaultValues });
+                toast.success('Upload successful!');
+                setID(response.data.kudos.id);
+                onOpen();
+            } catch (error) {
+                toast.error('Upload Failed');
+            }
+        } else {
+            toast.error('Connect Wallet first');
         }
+        setLoading(false);
     };
 
     const handleClick = async () => {
@@ -66,6 +80,12 @@ const MintPage: NextPage = () => {
 
     return (
         <Layout>
+            <CreatedKudoModal
+                id={id}
+                isOpen={isOpen}
+                onClose={onClose}
+                onOpen={onOpen}
+            />
             <Box
                 alignItems="center"
                 display="flex"
@@ -98,6 +118,7 @@ const MintPage: NextPage = () => {
                     <StepTwo
                         getValues={getValues}
                         handleClick={handleSubmit(onSubmit)}
+                        isLoading={isLoading}
                         register={register}
                         setValue={setValue}
                         vis={step === 1}

@@ -1,5 +1,6 @@
 import MintCard from './MintCard.component';
 import { Flex, Box, Input, Button } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 import { NextComponentType, NextPageContext } from 'next';
 import { useState } from 'react';
 import { UseFormRegister } from 'react-hook-form';
@@ -70,7 +71,19 @@ const StepOne: NextComponentType<NextPageContext, {}, props> = ({
                     />
                 </Flex>
 
-                <Button fontSize="md" h="10" onClick={handleClick} w="85%">
+                <Button
+                    as={motion.button}
+                    fontSize="md"
+                    h="10"
+                    onClick={handleClick}
+                    w="85%"
+                    whileHover={{
+                        y: 2,
+                    }}
+                    whileTap={{
+                        y: -2,
+                    }}
+                >
                     Next Step
                 </Button>
             </Box>

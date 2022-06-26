@@ -14,6 +14,7 @@ interface props {
     getValues: UseFormGetValues<IFormValues>;
     setValue: UseFormSetValue<IFormValues>;
     register: UseFormRegister<IFormValues>;
+    isLoading: boolean;
 }
 
 const StepTwo: NextComponentType<NextPageContext, {}, props> = ({
@@ -22,6 +23,7 @@ const StepTwo: NextComponentType<NextPageContext, {}, props> = ({
     getValues,
     setValue,
     register,
+    isLoading,
 }) => {
     const [isPublic, setIsPublic] = useState(getValues('isPublic'));
 
@@ -75,7 +77,9 @@ const StepTwo: NextComponentType<NextPageContext, {}, props> = ({
                 >
                     Public
                 </Checkbox>
-                <Button onClick={handleClick}>Mint Kudo</Button>
+                <Button isLoading={isLoading} onClick={handleClick}>
+                    Mint Kudo
+                </Button>
             </Flex>
         </Flex>
     );
