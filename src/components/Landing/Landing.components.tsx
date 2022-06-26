@@ -4,34 +4,40 @@ import ReactTyped from 'react-typed';
 
 const GitHubBadge = () => {
     return (
-        <Flex
-            _hover={{ bg: 'rgb(34, 35, 37)' }}
-            alignItems="center"
-            bg="#131314"
-            border="thin solid"
-            borderColor="rgb(34, 35, 37)"
-            color="white"
-            cursor="pointer"
-            dir="row"
-            fontSize="sm"
-            h="8"
-            px="6"
-            rounded="full"
-            transition="all 0.2s"
+        <a
+            href="https://github.com/buidler-hub/solkudos"
+            rel="noreferrer"
+            target="_blank"
         >
-            We&apos;re Open Source on
-            <Text
+            <Flex
+                _hover={{ bg: 'rgb(34, 35, 37)' }}
                 alignItems="center"
-                color="pink.500"
-                display="flex"
-                flexDir="row"
-                fontWeight="500"
-                gap="1"
-                ml="2"
+                bg="#131314"
+                border="thin solid"
+                borderColor="rgb(34, 35, 37)"
+                color="white"
+                cursor="pointer"
+                dir="row"
+                fontSize="sm"
+                h="8"
+                px="6"
+                rounded="full"
+                transition="all 0.2s"
             >
-                GITHUB <BsArrowRight />
-            </Text>
-        </Flex>
+                We&apos;re Open Source on
+                <Text
+                    alignItems="center"
+                    color="pink.500"
+                    display="flex"
+                    flexDir="row"
+                    fontWeight="500"
+                    gap="1"
+                    ml="2"
+                >
+                    GITHUB <BsArrowRight />
+                </Text>
+            </Flex>
+        </a>
     );
 };
 
