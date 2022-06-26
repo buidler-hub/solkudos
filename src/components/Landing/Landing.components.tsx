@@ -4,36 +4,37 @@ import ReactTyped from 'react-typed';
 
 const GitHubBadge = () => {
     return (
-        <Link href="https://github.com/buidler-hub/solkudos" isExternal>
-            <Flex
-                _hover={{ bg: 'rgb(34, 35, 37)' }}
+        <Flex
+            _hover={{ bg: 'rgb(34, 35, 37)', textDecoration: 'none' }}
+            alignItems="center"
+            as={Link}
+            bg="#131314"
+            border="thin solid"
+            borderColor="rgb(34, 35, 37)"
+            color="white"
+            cursor="pointer"
+            dir="row"
+            fontSize="sm"
+            h="8"
+            href="https://github.com/buidler-hub/solkudos"
+            isExternal
+            px="6"
+            rounded="full"
+            transition="all 0.2s"
+        >
+            We&apos;re Open Source on GitHub |
+            <Text
                 alignItems="center"
-                bg="#131314"
-                border="thin solid"
-                borderColor="rgb(34, 35, 37)"
-                color="white"
-                cursor="pointer"
-                dir="row"
-                fontSize="sm"
-                h="8"
-                px="6"
-                rounded="full"
-                transition="all 0.2s"
+                color="pink.500"
+                display="flex"
+                flexDir="row"
+                fontWeight="500"
+                gap="1"
+                ml="2"
             >
-                We&apos;re Open Source on GitHub |
-                <Text
-                    alignItems="center"
-                    color="pink.500"
-                    display="flex"
-                    flexDir="row"
-                    fontWeight="500"
-                    gap="1"
-                    ml="2"
-                >
-                    GITHUB <BsArrowRight />
-                </Text>
-            </Flex>
-        </Link>
+                GITHUB <BsArrowRight />
+            </Text>
+        </Flex>
     );
 };
 
