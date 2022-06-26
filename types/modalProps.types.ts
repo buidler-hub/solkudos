@@ -1,8 +1,15 @@
-interface modalProps {
+interface createdModalProps {
     isOpen: boolean;
     onOpen: () => void;
     onClose: () => void;
     id?: string;
 }
 
-export type { modalProps };
+interface claimedModalProps {
+    isOpen: boolean;
+    onOpen: () => void;
+    onClose: () => void;
+    url?: string;
+}
+
+export type { createdModalProps, claimedModalProps };
