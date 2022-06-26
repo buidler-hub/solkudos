@@ -1,6 +1,7 @@
 {
     "private": true,
     "scripts": {
+        "dev-nd": "next dev",
         "dev": "doppler setup -p solkudos -c dev && doppler run -- next dev",
         "build": "next build",
         "start": "next start",
