@@ -5,21 +5,19 @@ import {
     ModalHeader,
     ModalBody,
     ModalCloseButton,
-    Button,
     Text,
+    Link,
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { NextComponentType, NextPageContext } from 'next';
-import { useRouter } from 'next/router';
-import { createdModalProps } from 'types/modalProps.types';
+import { BiLinkExternal } from 'react-icons/bi';
+import { claimedModalProps } from 'types/modalProps.types';
 
 const CreatedKudoModal: NextComponentType<
     NextPageContext,
     {},
-    createdModalProps
-> = ({ isOpen, onClose, id }) => {
-    const router = useRouter();
-
+    claimedModalProps
+> = ({ isOpen, onClose, url }) => {
     return (
         <Modal isCentered isOpen={isOpen} onClose={onClose} onEsc={onClose}>
             <ModalOverlay />
@@ -36,7 +34,7 @@ const CreatedKudoModal: NextComponentType<
                 }}
             >
                 <ModalHeader textAlign="center" textColor="gray.100">
-                    Kudo Created!
+                    Kudo Claimed!
                 </ModalHeader>
                 <ModalCloseButton _active={{}} _focus={{}} />
                 <ModalBody
@@ -51,17 +49,20 @@ const CreatedKudoModal: NextComponentType<
                     textColor="white"
                 >
                     <Text fontSize="lg" fontWeight="500">
-                        Kudo created successfully
+                        Kudo claimed successfully
                     </Text>
-
-                    <Button
-                        fontSize="lg"
-                        h="10"
-                        onClick={() => router.push('mint/' + id)}
-                        w="24"
+                    <Link
+                        alignItems="center"
+                        display="flex"
+                        fontWeight="500"
+                        gap="2"
+                        href={url}
+                        isExternal
+                        textColor="pink.400"
+                        zIndex={50}
                     >
-                        Visit
-                    </Button>
+                        See Txn on solana explorer <BiLinkExternal />
+                    </Link>
                 </ModalBody>
             </ModalContent>
         </Modal>
