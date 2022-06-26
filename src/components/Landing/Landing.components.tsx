@@ -1,14 +1,10 @@
-import { Box, Flex, Text } from '@chakra-ui/react';
+import { Box, Flex, Link, Text } from '@chakra-ui/react';
 import { BsArrowRight } from 'react-icons/bs';
 import ReactTyped from 'react-typed';
 
 const GitHubBadge = () => {
     return (
-        <a
-            href="https://github.com/buidler-hub/solkudos"
-            rel="noreferrer"
-            target="_blank"
-        >
+        <Link href="https://github.com/buidler-hub/solkudos" isExternal>
             <Flex
                 _hover={{ bg: 'rgb(34, 35, 37)' }}
                 alignItems="center"
@@ -24,7 +20,7 @@ const GitHubBadge = () => {
                 rounded="full"
                 transition="all 0.2s"
             >
-                We&apos;re Open Source on
+                We&apos;re Open Source on GitHub |
                 <Text
                     alignItems="center"
                     color="pink.500"
@@ -37,7 +33,7 @@ const GitHubBadge = () => {
                     GITHUB <BsArrowRight />
                 </Text>
             </Flex>
-        </a>
+        </Link>
     );
 };
 
