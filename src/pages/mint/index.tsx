@@ -35,33 +35,32 @@ const MintPage: NextPage = () => {
     const { publicKey } = useWallet();
 
     const onSubmit = async data => {
-        onOpen();
-        // setLoading(true);
-        // if (publicKey) {
-        //     try {
-        //         const response = await axios.post('/api/upload', {
-        //             ...data,
-        //             creator: publicKey,
-        //             whitelistedPublicKeys: data.isPublic
-        //                 ? [publicKey]
-        //                 : [
-        //                       ...data.whitelistedPublicKeys.split(', '),
-        //                       publicKey,
-        //                   ],
-        //             base64: data.base64.split('base64,')[1],
-        //         });
+        setLoading(true);
+        if (publicKey) {
+            try {
+                const response = await axios.post('/api/upload', {
+                    ...data,
+                    creator: publicKey,
+                    whitelistedPublicKeys: data.isPublic
+                        ? [publicKey]
+                        : [
+                              ...data.whitelistedPublicKeys.split(', '),
+                              publicKey,
+                          ],
+                    base64: data.base64.split('base64,')[1],
+                });
 
-        //         reset({ ...defaultValues });
-        //         toast.success('Upload successful!');
-        //         setID(response.data.kudos.id);
-        //         onOpen();
-        //     } catch (error) {
-        //         toast.error('Upload Failed');
-        //     }
-        // } else {
-        //     toast.error('Connect Wallet first');
-        // }
-        // setLoading(false);
+                reset({ ...defaultValues });
+                toast.success('Upload successful!');
+                setID(response.data.kudos.id);
+                onOpen();
+            } catch (error) {
+                toast.error('Upload Failed');
+            }
+        } else {
+            toast.error('Connect Wallet first');
+        }
+        setLoading(false);
     };
 
     const handleClick = async () => {
