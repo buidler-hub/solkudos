@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Text } from '@chakra-ui/react';
+import { Box, Flex, Text } from '@chakra-ui/react';
 import { BsArrowRight } from 'react-icons/bs';
 import ReactTyped from 'react-typed';
 
@@ -37,7 +37,12 @@ const GitHubBadge = () => {
 
 const MainText = () => {
     return (
-        <Box color="white" fontSize={['3xl', '6xl']} fontWeight="900">
+        <Box
+            color="white"
+            fontSize={['3xl', '6xl']}
+            fontWeight="900"
+            zIndex={2}
+        >
             <Box display="flex">
                 Celebrate and Mint&nbsp;
                 <Text color="pink.500" display={{ base: 'block', lg: 'none' }}>
@@ -56,8 +61,4 @@ const MainText = () => {
     );
 };
 
-const CTAButton = () => {
-    return <Button>Sign up for free</Button>;
-};
-
-export { GitHubBadge, MainText, CTAButton };
+export { GitHubBadge, MainText };

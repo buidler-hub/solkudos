@@ -19,10 +19,6 @@ const MintPage: NextPage<IMintPageProps> = ({ data, Kudos }) => {
     const { publicKey } = useWallet();
 
     const canMint = () => {
-        if (!publicKey) {
-            return false;
-        }
-
         if (isPublic) {
             return true;
         }
@@ -36,13 +32,36 @@ const MintPage: NextPage<IMintPageProps> = ({ data, Kudos }) => {
 
     return (
         <Layout>
-            <Flex flexDir="column" gap="4" zIndex={1}>
-                <Image alt={name} maxW="96" objectFit="contain" src={image} />
-                <Text color="white" fontSize="3xl" fontWeight="semibold">
+            <Flex
+                alignItems="center"
+                bgColor="rgba(15, 15, 16, 0.57)"
+                direction="column"
+                gap="4"
+                h="75vh"
+                justifyContent="center"
+                rounded={8}
+                w="28rem"
+                zIndex={2}
+            >
+                <Image
+                    alt={name}
+                    height="72"
+                    rounded="10"
+                    src={image}
+                    width="72"
+                />
+
+                <Text color="white" fontFamily="inter" fontSize="xl">
                     {name}
                 </Text>
-                <Text color="white">{description}</Text>
-                <Button disabled={!canMint()}>Mint</Button>
+
+                <Text color="gray.300" fontFamily="inter" fontSize="md">
+                    {description}
+                </Text>
+
+                <Button disabled={!canMint()} h="10" w="36">
+                    Claim Kudo
+                </Button>
             </Flex>
         </Layout>
     );
