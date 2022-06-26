@@ -19,8 +19,8 @@ const Layout: FC<ILayoutProps> = ({ children }) => {
             textAlign="center"
             w="100vw"
         >
-            <Header />
             {children}
+            <Header />
             <Sidebar />
             <Blob bg="purple.600" left="0" zIndex="0" />
             <Blob bg="pink.600" right="0" zIndex="0" />
