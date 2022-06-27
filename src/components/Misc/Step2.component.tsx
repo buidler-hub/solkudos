@@ -64,10 +64,10 @@ const StepTwo: NextComponentType<NextPageContext, {}, props> = ({
                     _active={{}}
                     _focus={{}}
                     _hover={{}}
-                    checked={isPublic}
                     fontFamily="inter"
                     fontSize="xl"
                     fontWeight="500"
+                    isChecked={isPublic}
                     onChange={e => {
                         setValue('isPublic', e.target.checked);
                         setIsPublic(e.target.checked);
